@@ -4,9 +4,8 @@ CREATE DATABASE IF NOT EXISTS umc_db;
 -- 데이터베이스 선택
 USE umc_db;
 
-
-
-CREATE TABLE member (
+-- member 테이블 생성 (존재하지 않으면 생성)
+CREATE TABLE IF NOT EXISTS member (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50),
     gender ENUM('M', 'F'),
@@ -21,7 +20,8 @@ CREATE TABLE member (
     status VARCHAR(50)
 );
 
-CREATE TABLE point (
+-- point 테이블 생성
+CREATE TABLE IF NOT EXISTS point (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     k2 BIGINT,
     point_total INT,
@@ -32,7 +32,8 @@ CREATE TABLE point (
     FOREIGN KEY (k2) REFERENCES member(id)
 );
 
-CREATE TABLE mission (
+-- mission 테이블 생성
+CREATE TABLE IF NOT EXISTS mission (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     k2 BIGINT,
     mission_point INT,
@@ -45,8 +46,8 @@ CREATE TABLE mission (
     FOREIGN KEY (k2) REFERENCES member(id)
 );
 
-
-CREATE TABLE my_mission (
+-- my_mission 테이블 생성
+CREATE TABLE IF NOT EXISTS my_mission (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     k22 BIGINT,
     k222 BIGINT,
@@ -58,8 +59,8 @@ CREATE TABLE my_mission (
     FOREIGN KEY (k222) REFERENCES mission(id)
 );
 
-
-CREATE TABLE restaurant (
+-- restaurant 테이블 생성
+CREATE TABLE IF NOT EXISTS restaurant (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     k2 BIGINT,
     k3 BIGINT,
@@ -73,8 +74,8 @@ CREATE TABLE restaurant (
     FOREIGN KEY (k2) REFERENCES member(id)
 );
 
-
-CREATE TABLE inquiry (
+-- inquiry 테이블 생성
+CREATE TABLE IF NOT EXISTS inquiry (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     k2 BIGINT,
     inquiry_title VARCHAR(50),
@@ -87,7 +88,8 @@ CREATE TABLE inquiry (
     FOREIGN KEY (k2) REFERENCES member(id)
 );
 
-CREATE TABLE inquiry_photo (
+-- inquiry_photo 테이블 생성
+CREATE TABLE IF NOT EXISTS inquiry_photo (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     k2 BIGINT,
     k22 BIGINT,
@@ -100,8 +102,8 @@ CREATE TABLE inquiry_photo (
     FOREIGN KEY (k22) REFERENCES inquiry(id)
 );
 
-
-CREATE TABLE review (
+-- review 테이블 생성
+CREATE TABLE IF NOT EXISTS review (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     k2 BIGINT,
     review_rating DOUBLE,
@@ -113,8 +115,8 @@ CREATE TABLE review (
     FOREIGN KEY (k2) REFERENCES member(id)
 );
 
-
-CREATE TABLE review_photo (
+-- review_photo 테이블 생성
+CREATE TABLE IF NOT EXISTS review_photo (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     k2 BIGINT,
     k22 BIGINT,
@@ -127,8 +129,8 @@ CREATE TABLE review_photo (
     FOREIGN KEY (k22) REFERENCES review(id)
 );
 
-
-CREATE TABLE food (
+-- food 테이블 생성
+CREATE TABLE IF NOT EXISTS food (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     created_at DATETIME,
     deleted_at DATETIME,
@@ -136,8 +138,8 @@ CREATE TABLE food (
     status VARCHAR(50)
 );
 
-
-CREATE TABLE food_preference (
+-- food_preference 테이블 생성
+CREATE TABLE IF NOT EXISTS food_preference (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     k2 BIGINT,
     k3 BIGINT,
