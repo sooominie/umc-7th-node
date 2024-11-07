@@ -9,10 +9,22 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "umc",
             "username": "root",
             "database": "umc_db",
-            "askForPassword": true
+            "name": "umc_db"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "umc_db",
+            "database": "UMC",
+            "username": "root"
         }
     ]
 }
