@@ -43,3 +43,53 @@ model UserFavorCategory {
   @@index([userId], map: "user_id")
   @@map("user_favor_category")
 }
+
+
+
+
+
+model Member {
+  id           BigInt    @id @default(autoincrement())
+  name         String?
+  gender       String?    @default("M") // ENUM('M', 'F')가 Prisma에서는 String으로 정의됨
+  birth        DateTime?
+  nickname     String?
+  address      String?
+  phone_number String?
+  email        String?
+  created_at   DateTime   @default(now())
+  deleted_at   DateTime?
+  updated_at   DateTime?  @updatedAt
+  status       String?
+
+  reviews      Review[]
+}
+
+model Review {
+  id             BigInt    @id @default(autoincrement())
+  member_id      BigInt
+  restaurant_id  BigInt
+  review_rating  Float
+  review_content String
+  created_at     DateTime   @default(now())
+  deleted_at     DateTime?
+  updated_at     DateTime?  @updatedAt
+  status         String?
+
+  member         Member     @relation(fields: [member_id], references: [id])
+  restaurant     Restaurant @relation(fields: [restaurant_id], references: [id])
+}
+
+model Restaurant {
+  id                  BigInt    @id @default(autoincrement())
+  region_id           BigInt?
+  restaurant_name     String
+  restaurant_address  String
+  restaurant_category String
+  created_at          DateTime  @default(now())
+  deleted_at          DateTime?
+  updated_at          DateTime? @updatedAt
+  status              String?
+
+  reviews             Review[]
+}

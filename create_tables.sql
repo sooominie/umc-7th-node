@@ -100,6 +100,7 @@ CREATE TABLE inquiry_photo (
 );
 
 
+
 CREATE TABLE review (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     member_id BIGINT,  -- 리뷰 작성자의 ID
